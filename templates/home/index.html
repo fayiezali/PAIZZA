@@ -1,0 +1,91 @@
+{% extends "home/base.html" %}  
+{% load static %}
+
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+<p> This Is (index.html) Page - Put The Title Page Here <p>
+{% endblock PAGE_TITLE  %}  
+
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+<p> Here The Alert Messages Will Appear <p>
+    <!-- ظهور رسالة للمستخدم -->
+    {% if messages %} <!-- جملة شرطية للتحقق من وجود رسالة قبل عرضها-->
+        {% for message in messages %} <!-- جملة تكرار للمرور على جميع  محتويات الرسالة لعرضها كلها -->
+    <!--success: هي التي تقوم بتحديد لون الرسالة اخضر -->
+    <!--warning: هي التي تقوم بتحديد لون الرسالة احمر -->
+            <div  class="alert alert-success">
+                {{ message }} <!-- المتغير الذي يحمل نص الرسالة-->
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock MESSAGES_CONTENTS  %}  
+
+
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+{% comment %} <p> Here The Main Content Of The Required Page Will Appear <p> {% endcomment %}
+
+
+<section id="new-arrivals" class="new-arrivals">
+	<div class="container">
+		<div class="section-header">
+					<h2>new arrivals</h2>
+				</div><!--/.section-header-->
+				<div class="new-arrivals-content">
+					<div class="row">
+
+	{% for pizzas_item_list in pizzas %} 
+	<div class="col-md-3 col-sm-4">
+		<div class="single-new-arrival">
+			<div class="single-new-arrival-bg">
+				<img src = {{pizzas_item_list.images.url}} alt="new-arrivals images" >
+				<div class="single-new-arrival-bg-overlay"></div>
+				<div class="sale bg-1">
+					<p>sale</p>
+				</div>
+				<div class="new-arrival-cart">
+					<p>
+						<span class="lnr lnr-cart"></span>
+						<a href="{% url 'add_cart'  pizzas_item_list.uid  %}">add <span>to </span> cart</a>
+					</p>
+					<p class="arrival-review pull-right">
+						<span class="lnr lnr-heart"></span>
+						<span class="lnr lnr-frame-expand"></span>
+					</p>
+				</div>
+			</div>
+			<h4><a href="#">                {{pizzas_item_list.pizza_name}}  </a></h4>
+			<p class="arrival-product-price"> SR {{pizzas_item_list.price}}       </p>
+		</div>
+			<div class="single-feature-txt text-center">
+				<p>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
+					<span class="feature-review">(45 review)</span>
+				</p>
+		</div>
+	</div>
+{% endfor %}
+		</div>
+	</div><!--/.container-->
+</section><!--/.new-arrivals-->
+
+
+{% endblock CONTENTS_PAGE %} 
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+
+    <p> PAGINATION </p>
+
+{% endblock PAGINATION %} 

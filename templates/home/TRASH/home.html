@@ -1,0 +1,221 @@
+{% extends "home/base.html" %}  
+{% load static %}
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+
+    <h4> PAGE_TITLE </h4>
+
+{% endblock PAGE_TITLE  %}  
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+
+    <h4> MESSAGES_CONTENTS </h4>
+
+{% endblock MESSAGES_CONTENTS  %}  
+
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+
+    <h4> CONTENTS_PAGE </h4>
+
+{% endblock CONTENTS_PAGE %} 
+
+
+<!-- SEARCH_BOX ------------------------------ -->
+{% block    SEARCH_BOX %} 
+
+    <h4> SEARCH_BOX </h4>
+
+{% endblock SEARCH_BOX %} 
+
+
+<!---  USERISAUTHENTICATED --------------------------- -->
+{% block    USER_IS_AUTHENTICATED %} 
+
+    <h4> USER_IS_AUTHENTICATED </h4>
+
+{% endblock USER_IS_AUTHENTICATED %} 
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+
+    <h4> PAGINATION </h4>
+
+{% endblock PAGINATION %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    <!-- {% block Profile_Image  %}
+    <img  src="{% static 'Profile_Image.jpg' %}"  width="" height="200"> 
+    {% endblock Profile_Image %}   -->
+    
+    
+    
+    
+    
+    {% block messages_Contents  %}
+    
+    <!-- ظهور رسالة للمستخدم -->
+    {% if messages %} <!-- جملة شرطية للتحقق من وجود رسالة قبل عرضها-->
+        {% for message in messages %} <!-- جملة تكرار للمرور على جميع  محتويات الرسالة لعرضها كلها -->
+    <!--success: هي التي تقوم بتحديد لون الرسالة اخضر -->
+    <!--warning: هي التي تقوم بتحديد لون الرسالة احمر -->
+            <div  class="alert alert-success">
+                {{ message }} <!-- المتغير الذي يحمل نص الرسالة-->
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    {% endblock messages_Contents %} 
+    
+    
+    
+    
+    
+    
+    {% block Contents_Page %} 
+    
+    <div class="article">
+        <br>
+        <img  src="{% static 'Image_Index_Home.png' %}" alt="" width="1500" height="560"> <!-- عرض الصورة -->
+    </div>
+    
+    {% endblock Contents_Page %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

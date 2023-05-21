@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!---  HEADER_PAGE_INCLUDE  ----------------------------- -->
+{% include 'home/header.html'%}
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+{% endblock PAGE_TITLE  %}  
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+{% endblock MESSAGES_CONTENTS  %}  
+
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+{% endblock CONTENTS_PAGE %} 
+
+
+<!---  USERISAUTHENTICATED --------------------------- -->
+{% block    USER_IS_AUTHENTICATED %} 
+{% endblock USER_IS_AUTHENTICATED %} 
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+{% endblock PAGINATION %} 
+
+
+<!---  FOOTER_PAGE_INCLUDE  ----------------------------- -->
+{% include 'home/footer.html'%}
+
+</html>

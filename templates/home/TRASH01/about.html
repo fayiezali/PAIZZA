@@ -1,0 +1,60 @@
+{% extends "home/base.html" %}  
+    {% load static %}
+
+
+        <!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+<div class="row justify-content-center">
+    <h4> PAGE_ABOUT </h4>
+	<div class="col-md-4 about-right">
+		<img class="img-responsive" src="{% static 'images/ab.jpg' %}" alt="">
+	</div>
+</div>
+{% endblock PAGE_TITLE  %}  
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+	<h4> MESSAGES_CONTENTS </h4>
+    <!-- ظهور رسالة للمستخدم -->
+    {% if messages %} <!-- جملة شرطية للتحقق من وجود رسالة قبل عرضها-->
+        {% for message in messages %} <!-- جملة تكرار للمرور على جميع  محتويات الرسالة لعرضها كلها -->
+    <!--success: هي التي تقوم بتحديد لون الرسالة اخضر -->
+    <!--warning: هي التي تقوم بتحديد لون الرسالة احمر -->
+            <div  class="alert alert-success">
+                {{ message }} <!-- المتغير الذي يحمل نص الرسالة-->
+            </div>
+        {% endfor %}    
+    {% endif %}
+{% endblock MESSAGES_CONTENTS  %}  
+
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+    <h4> CONTENTS_PAGE </h4>
+	<div class="col-md-4 about-right">
+		<img class="img-responsive" src="{% static 'images/ab1.jpg' %}" alt="">
+		</div>
+{% endblock CONTENTS_PAGE %} 
+
+
+<!-- SEARCH_BOX ------------------------------ -->
+{% block    SEARCH_BOX %} 
+    <h4> SEARCH_BOX </h4>
+    <div data-vide-bg="{% static 'video/video' %}">
+        <div class="container">
+            <div class="banner-info">
+                <h3>It is a long established fact that a reader will be distracted by 
+                the readable </h3>	
+                <div class="search-form">
+                    <form action="#" method="post">
+                        <input type="text" placeholder="Search..." name="Search...">
+                        <input type="submit" value=" " >
+                    </form>
+                </div>		
+            </div>	
+        </div>
+    </div>
+{% endblock SEARCH_BOX %} 
+
+
