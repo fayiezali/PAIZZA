@@ -39,6 +39,8 @@ def add_cart(request , pizza_uid):
     return redirect('/')
 
 def cart(request):
-    return render(request , 'cart.html')
+    cart = Cart.objects.get(is_paid = False , user = request.user)
+    context = {'carts' : cart}
+    return render(request , 'home/cart.html' , context)
 
 
