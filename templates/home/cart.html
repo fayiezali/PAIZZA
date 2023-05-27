@@ -1,0 +1,224 @@
+{% extends "home/base.html" %}  
+{% load static %} 
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+<p> This Is (Cart.html) Page - Put The Title Page Here <p>
+{% endblock PAGE_TITLE  %}  
+
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+<p> Here The Alert Messages Will Appear <p>
+    <!-- ظهور رسالة للمستخدم -->
+    {% if messages %} <!-- جملة شرطية للتحقق من وجود رسالة قبل عرضها-->
+        {% for message in messages %} <!-- جملة تكرار للمرور على جميع  محتويات الرسالة لعرضها كلها -->
+    <!--success: هي التي تقوم بتحديد لون الرسالة اخضر -->
+    <!--warning: هي التي تقوم بتحديد لون الرسالة احمر -->
+            <div  class="alert alert-success">
+                {{ message }} <!-- المتغير الذي يحمل نص الرسالة-->
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock MESSAGES_CONTENTS  %}  
+
+{% comment %} <p> Here The Main Content Of The Required Page Will Appear <p> {% endcomment %}
+{% comment %} 
+{% for cartItems in carts.cart_items.all %} 
+{{ request.user.get_cart_count }}
+{{cartItems.pizza.images.url}} 
+{{cartItems.Pizza.pizza_name }}
+{{cartItems.pizza.price }} 
+{% for cartItems in carts.cart_items.all %} 
+{% endcomment %}
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+{% comment %} % comment %} <p> Here The Main Content Of The Required Page Will Appear <p>  {% endcomment %}
+    {% comment %} 
+    {{ request.user.get_cart_count }}
+    {{cartItems.pizza.images.url}} 
+    {{cartItems.Pizza.pizza_name }}
+    {{cartItems.pizza.price }} 
+    {% endcomment %}
+<head>       
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet"href="{% static 'assets/css/main.css' %}">
+        
+        <link rel="stylesheet"href="{% static 'assets/css/main.css' %}">
+        <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script>
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+{% comment %}  {% endcomment %}
+
+
+        <section class="mt-5">
+            <div class="container">
+                <div class="cart">
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <thead class="thead-dark">
+
+
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+
+            <tr>
+                <th scope="col"class="text-white">Auto Numbering</th>
+                <th scope="col"class="text-white">Action</th>
+                <th scope="col"class="text-white">Product Image</th>
+                <th scope="col"class="text-white">Price</th>
+                <th scope="col"class="text-white">Quantity</th>
+                <th scope="col"class="text-white">Total</th>
+            </tr>
+        </thead>
+
+            {%  if carts.cart_items.all  %}  <!--conditional Statement to Check For Data -->
+
+            {% for cartItems in carts.cart_items.all %} 
+
+            <tr>           
+            <th scope="row">{{ forloop.counter }} </th>
+            <td> <a href="#" class="btn btn-danger">Delete</a> </td> <!--  Delete Record  -->  
+            <td><img src=" {{cartItems.pizza.images.url}}" alt="" width="100" height="100"></td>
+            <td> {{cartItems.pizza.price }} </td>
+            <td>
+                    <div class="col-md-4 col-lg-4 col-xl-4 d-flex">
+                        <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <i class="fas fa-minus"></i>
+                        </button>
+
+                        <input id="form1" min="0" name="quantity" value="1" type="number"
+                        class="form-control form-control-sm" />
+
+                        <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+            </td>
+            <td> {{cartItems.Pizza.pizza_name }} </td>            
+
+            </tr>
+            {% endfor %}
+            {% else %}
+                <h4>There are No Data.</h4>
+              {% endif %} 
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+
+        <section class="mt-5">
+            <div class="col-lg-4 offset-lg-5">
+                <div class="checkout">
+                    <ul>
+                        <li class="subtotal">subtotal
+                            <span>$60.00</span>
+                        </li>
+                        <li class="cart-total">Total
+                        <span> {{carts.get_cart_total}}</span></li>
+                    </ul>
+                    <a href="#"class="proceed-btn">Proceed to Checkout</a>
+                </div>
+            </div>
+        </section>
+
+{% endblock CONTENTS_PAGE %} 
+
+
+    <!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+    
+    {% comment %} <p> PAGINATION </p> {% endcomment %}
+    
+{% endblock PAGINATION %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+    {% for cartItems in carts.cart_items.all %} 
+
+    <li class="single-cart-list">
+        <a href="#" class="photo"><img src= {{cartItems.pizza.images.url}} class="cart-thumb" alt="image" /></a>
+        <div class="cart-list-txt">
+            <h6><a href="#"> {{cartItems.Pizza.pizza_name }}</a></h6>
+            <p> Price <span class="price"> $ {{cartItems.pizza.price }}</span></p>
+        </div><!--/.cart-list-txt-->
+        <div class="cart-close">cartItems
+            <span class="lnr lnr-cross"></span>
+        </div><!--/.cart-close-->
+    </li><!--/.single-cart-list -->
+
+{% endfor %} 
+
+    <li class="total">
+        <span>Total: $0.00</span>
+        <p>
+            <span class="lnr lnr-cart"></span>
+            <a href="{% url 'cart'   %}">View <span> </span> cart</a>
+        </p>
+
+    </li>
+</ul>
+</li><!--/.dropdown-->
+</ul>
+</div><!--/.attr-nav-->
+<!-- End Atribute Navigation -->
+ {% endcomment %}
+
+
+
+
+
+
